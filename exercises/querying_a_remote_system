@@ -1,0 +1,4 @@
+ansible --version
+ansible apacheweb -m setup -a 'filter=*ipv4*'
+ansible apacheweb -m shell -a 'yum list installed | grep lynx'
+ansible apacheweb -m shell -a 'tail -n 10 '/var/log/dmesg'
