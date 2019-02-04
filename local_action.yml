@@ -1,0 +1,9 @@
+--- # LOCAL ACTION PLAYBOOK EXAMPLE
+- hosts: 127.0.0.1
+  sudo: yes
+  user: test
+  connection: local
+  gather_facts: no
+  tasks:  
+  - name: Install telnet client
+    yum: pkg=telnet state=installed
