@@ -1,0 +1,13 @@
+---
+- hosts: apacheweb
+  user: test
+  connection: ssh 
+  sudo: yes
+  gather_facts: yes
+  tasks:
+  - name: Install apache web server
+    command: yum install -y httpd
+    when: ansible_os_family == "RedHat"
+  - name: Install apache web server
+    command: apt-get install -y apache2
+    when: ansible_os_family == "Debian"
