@@ -1,0 +1,11 @@
+--- #RUN ONCE EXAMPOLE PLAYBOOK
+- hosts: all
+  user: test
+  sudo: yes
+  gather_facts: no
+  tasks:
+  - name: Log current uptime into a fie
+    raw: /usr/bin/uptime > /home/test/uptime.log
+  - name: List /var directory and pipe it to file
+    raw: ls -alh /var > /home/test/dir.list
+    run_once: true
