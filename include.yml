@@ -1,0 +1,10 @@
+--- #INCLUDE PLAYBOOK EXAMPLE
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  gather_facts: no
+  connection: ssh
+  tasks:
+  - include: plays/packages.yml
+  - name: Verify the packages has been installed
+    raw: yum list installed | grep telnet > /home/test/pkgs.log 
