@@ -1,0 +1,12 @@
+---
+- hosts: apacheweb
+  user: test
+  connection: ssh
+  sudo: yes
+  tasks:
+  - name: Install appche web server
+    yum: pkg=httpd state=installed
+    notify: Restart HTTPD
+  handlers:
+  - name: Restart HTTPD
+    action: service name=httpd state=restarted
