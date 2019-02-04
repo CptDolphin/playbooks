@@ -1,0 +1,14 @@
+---
+- hosts: apacheweb
+  tasks:
+  - name: Install the lyn module
+    yum: pkg=lynx state=installed update_cache=true
+  - name: Verify lynx is installed
+    yum: pkg=lynx state=present update_cache=true
+
+- hosts: appserver
+  tasks:
+  - name: Install lynx on app servers
+    yum: pkg=telnet state=installed update_cache=true
+  - name: Querying for lynx install
+    yum: pkg=lynx state=present update_cache=true 

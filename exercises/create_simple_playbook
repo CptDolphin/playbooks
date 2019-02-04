@@ -1,0 +1,3 @@
+mkdir playbooks; cd playbooks; touch deploy_03022019.yml
+ansible-playbook -s deploy03022019.yml
+tail /var/log/ansible.log

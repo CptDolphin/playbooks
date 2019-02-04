@@ -1,0 +1,5 @@
+ansible --version
+ansible all --list-hosts
+ansible local -m setup
+ansible all -m setup
+ansible local -m setup -a 'filter=*ipv4*'
