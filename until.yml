@@ -1,0 +1,15 @@
+--- #UNTIL PLAYBOOK EXAMPLE
+- hosts: all  
+  user: test
+  sudo: yes
+  gather_facts: no
+  tasks:
+    - name: Install apache web server
+      yum: pkg=httpd state=latest
+    - name: Verify the httpd package has been installed
+      shell: systemctl status httpd
+      register: result
+      until: result.stdout.find("active (running)") != -1
+      retries: 5
+      delay: 5
+    - debug: var=result
