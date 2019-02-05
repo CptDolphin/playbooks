@@ -1,0 +1,10 @@
+--- #TESTING THE USER MODULE
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: add the user called tstapache to the apache web client
+      #user: name=tstapache comment="Test Apache 2 User" shell=/bin/bash group=wheel
+      user: name=tstapache state=absent remove=yes
