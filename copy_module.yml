@@ -1,0 +1,9 @@
+--- #COPY MODULE PLAYBOOK
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Copy from the files directory to the 
+      action: copy src=/home/test/uptime.log dest=/home/test/playbooks/ mode=0644 owner=test group=test backup=yes
