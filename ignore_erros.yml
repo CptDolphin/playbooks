@@ -1,0 +1,12 @@
+--- # IGNORE ERRORS EXAMPLE PLAYBOOK
+- hosts: apacheweb
+  sudo: yes
+  user: test
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install httpd apache web server
+      yum: pkg=httpd state=latest
+    - name: Check the status of httpd 
+      command: systemctl status httpd 
+      ignore_errors: yes

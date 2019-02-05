@@ -1,0 +1,34 @@
+--- # YML FILE BASED ON TXT SCHEMA
+- hosts: apacheweb
+  sudo: yes
+  user: test
+  tasks:
+  - name: Capture timestamp when starting 
+    command: /usr/bin/date
+    register: result
+  - debug: var=result
+  - name: Install apache web server
+    yum: pkg=httpd state=latest
+    notify: 
+    - Restart HTTPD
+  - name: Verify the httpd is running
+    command: systemctl status httpd
+    ignore_errors: yes
+    register: httpd_status
+  - debug: var=httpd_status
+  - name: install telnet and lynx
+    yum: pkg={{ item }} state=installed
+    with_items:
+      - lynx
+      - telnet
+  - name: Log all packages installed on the system
+    command: yum list installed
+    register: installed
+  - debug: var=installed
+  - name: Capture timestamp after 
+    command: /usr/bin/date
+    register: end_date
+  - debug: var=end_date
+  handlers: 
+  - name: Restart HTTPD
+    service: name=httpd state=restarted
