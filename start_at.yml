@@ -11,5 +11,9 @@
       yum: pkg=httpd state=latest
     - name: Install lynx
       yum: pkg=lynx state=latest
+
 # When running this method we will skip installing telnet 
 # ansible-playbook start_at.yml --start-at="Install httpd"
+#
+# When running this method we will be asked about each individual task step if we want to perform it or not 
+# ansible-playbook start_at.yml --step
