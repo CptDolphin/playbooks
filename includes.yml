@@ -1,0 +1,12 @@
+--- #INCLIUDE PLAYBOOK EXAMPLE  
+- hosts: apacheweb
+  connection: ssh
+  user: test
+  sudo: yes
+  gather_facts: no
+  tasks:
+    - include: plays/telnet.yml
+    - name: Verify that telnet is installed
+      command: yum list installed | grep telnet
+      register: result
+    - debug: var=result
