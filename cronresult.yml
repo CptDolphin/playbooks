@@ -1,0 +1,9 @@
+--- #CRON MODULE TEST
+- hosts: apacheweb
+  user: test
+  connection: ssh 
+  gather_facts: no
+  tasks:
+    - name: Add a CRON Job to the Test User
+     # cron: name="list files" minute="0" hour="0" job="ls -al > /etc/test/crontresult.log"
+      cron: name="list files" state=absent
