@@ -9,3 +9,5 @@
       action: yum name=httpd state=installed
     - name: start httpd
       service: name=httpd state=started
+    - name: enable httpd after reboot
+      service: name=httpd enabled=yes
