@@ -1,0 +1,14 @@
+---
+- hosts:
+  sudo: yes
+  user: test
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: DNF update
+      dnf: "@Development tools" state=present
+    - name: install httpd
+      dnf: name=httpd state=latest
+    - name: uninstall httpd
+      dnf: name=httpd state=absent
+  
