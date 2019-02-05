@@ -1,0 +1,11 @@
+---
+- hosts: '{{ hosts }}'
+  connection: '{{ conn }}'
+  sudo: yes
+  user: test
+  gather_facts: no
+  tasks:
+    - name: Install telnet 
+      yum: pkg={{ pkg }} state=latest
+
+# ansible-playbook fromcmdline.yml --extra-vars "hosts=apacheweb conn=ssh pkg=telnet"
