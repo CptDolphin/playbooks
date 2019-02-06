@@ -4,5 +4,7 @@
   sudo: yes
   connection: ssh
   gather_facts: no
-  tasks: 
+  tasks:
+# getsebool -a | grep httpd 
+# sestatus  
     - seboolean: name=httpd_anon_write state=yes persistent=yes
