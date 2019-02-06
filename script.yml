@@ -1,0 +1,8 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+    - script: /home/test/playbooks/playbooks/uptime.sh > output.log creates=/home/test/output.log
+   # - script: /home/test/playbooks/playbooks/uptime.sh > output.log --some-arguments asd 213
