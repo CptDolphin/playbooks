@@ -1,0 +1,9 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - selinux: policy=targeted state=permissive
+    #- selinux: state=disabled # we would have to reboot the system for the change to applu
