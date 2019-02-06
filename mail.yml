@@ -1,0 +1,12 @@
+--- 
+- hosts: apacheweb
+  user: test
+  connection: ssh
+  tasks:
+    - name: Send an email to test user indicating build completion
+      mail: 
+        host='localhost'
+        port=25
+        to="test"
+        subject="Out host is finished deploying"
+        body='The system called {{ ansible_hostname }} has been successfuly set up'
