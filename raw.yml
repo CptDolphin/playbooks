@@ -1,0 +1,7 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+    - raw:/usr/bin/date > date.log executable=/bin/csh # if we want to run python ruby or bash scripts we can put diffrent shabanks
