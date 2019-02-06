@@ -1,0 +1,14 @@
+---
+- hosts: apacheweb
+  sudo: yes
+  user: test
+  connection: ssh
+  tasks:
+  - stat: path=/home/test/abc
+    register: p
+  - debug: msg="Path exists and is an directory"
+    when: p.stat.isdir is defined and p.stat.isdir
+  - debug: msg="Path is a link"
+    when: p.stat.islnk is defined and p.stat.islnk == True
+  - debug: msg="File owner is test" 
+    when: p.stat.pw_name == 'test'
