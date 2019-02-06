@@ -1,0 +1,11 @@
+---
+- hosts: apacheweb
+  user: test
+  connection: ssh
+  sudo: yes
+  gather_facts: no
+  tasks:
+    - shell: /usr/bin/uptime > uptimecurrent.log
+      args:
+        chdir: /home/test/playbooks
+        creates: uptimecurrent.log
